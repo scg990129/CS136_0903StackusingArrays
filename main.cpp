@@ -140,13 +140,13 @@ public:
     void Push(T& value){
         this->list.Push(value);
     }
-    T Pop(){
+    T& Pop(){
         if (this->list.Size() == 0){
             std::ostringstream oss;
             oss << "Pop(): index out of range: " << this->list.Size() << ", currect size() = " << this->list.Size();
             throw std::out_of_range(oss.str());
         }
-        T value = this->list.get(this->list.Size() - 1);
+        T& value = this->list.get(this->list.Size() - 1);
         this->list.Remove(this->list.Size() - 1);
         return value;
     }
@@ -195,4 +195,21 @@ int main(const int argc, const char* argv[]){
     cout << "3.2) Push() again the element 87" << endl;
     stack.Push(testvalue = 87);
     cout << "stack size getSize(): " << stack.Size() << endl;
+
+    cout << "4.0) Pop() the element 87 by pop" << endl;
+    cout << "stack Pop(): " << stack.Pop() << endl;
+    cout << "stack size getSize(): " << stack.Size() << endl;
+    cout << "4.1) Pop() the element 88 by pop" << endl;
+    cout << "stack Pop(): " << stack.Pop() << endl;
+    cout << "stack size getSize(): " << stack.Size() << endl;
+    cout << "4.2) Pop() the element 89 by pop" << endl;
+    cout << "stack Pop(): " << stack.Pop() << endl;
+    cout << "stack size getSize(): " << stack.Size() << endl;
+    try{
+        cout << "4.3) Pop() the element by pop (catached by exception): " << endl;
+        cout << "stack Pop(): " << stack.Pop() << endl;
+        cout << "stack size getSize(): " << stack.Size() << endl;
+    }catch (std::out_of_range& e){
+        cout << "out_of_range correctly: " << e.what() << endl;
+    }
 }
