@@ -1,11 +1,11 @@
 // Exercise 1
 // Stack using Arrays
-// Implement the Stack class using an array. The class should contain the constructor, destructor along with the Size(),Push(x) and Pop() operations. 
+// Implement the Stack class using an array. The class should contain the constructor, destructor along with the Size(),Push(x) and Pop() operations.
 // Also, demonstrate your implementation by using it in a small program. (You can briefly create a variable and use each operation).
 
 // Question 1
-// The stack's operations are somewhat of a subset of the List operations we learned prevously and can be implmented using those operations. 
-// Please implement the Push and Pop operations using the List's operations (ie: size(), get(), set(), add(), remove()) 
+// The stack's operations are somewhat of a subset of the List operations we learned prevously and can be implmented using those operations.
+// Please implement the Push and Pop operations using the List's operations (ie: size(), get(), set(), add(), remove())
 // (hint: you are always going to be adding or removing at the end of the list.)
 
 #include <iostream>
@@ -34,7 +34,7 @@ protected:
     T& operator[](const std::size_t index) {
         // if (index == 0 && arr == nullptr){
         //     this->resize(1);
-        // }else 
+        // }else
         if (index >= size){
             // throw std::out_of_range("index out of range");
             this->resize(index + 1);
@@ -66,7 +66,7 @@ public:
     }
     // basic functions
     // Size() returns how many values are in the current list. This value is stored in the size variable.
-    const std::size_t Size() const { 
+    const std::size_t Size() const {
         return size;
     }
     const std::size_t Capacity() const {
@@ -123,7 +123,7 @@ public:
     }
 };
 
-template <typename T> 
+template <typename T>
 class Stack {
 protected:
     CustomList2<T> list;
@@ -133,12 +133,12 @@ public:
     Stack(){
         this->list = CustomList2<T>();
     }
-    // Size(),Push(x) and Pop() 
-    const std::size_t Size() const { 
+    // Size(),Push(x) and Pop()
+    const std::size_t Size() const {
         return this->list.Size();
     }
     void Push(T& value){
-        this->list.Push(value);
+        this->list.Add(this->list.Size(), value);
     }
     T& Pop(){
         if (this->list.Size() == 0){
@@ -155,7 +155,7 @@ public:
 int main(const int argc, const char* argv[]){
     Stack<int> stack;
     int testvalue = 99;
-    
+
     cout << "0) check element in the empty list" << endl;
     cout << "stack size getSize(): " << stack.Size() << endl;
 
